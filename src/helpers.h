@@ -35,6 +35,9 @@ std::vector<Position> GenerateSamples(size_t size, double gps_x, double gps_y,
 
 Position ToMap(Position particle, Position observation);
 
+double NormPDF(double x, double y, double mu_x, double mu_y, double std_x,
+               double std_y);
+
 }  // namespace helpers
 
 #endif  // PARTICLEFILTER_SRC_HELPERS_H_

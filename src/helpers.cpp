@@ -1,6 +1,7 @@
 #include "helpers.h"
 
 #include <array>
+#include <cmath>
 #include <random>
 #include <vector>
 
@@ -26,4 +27,12 @@ helpers::Position helpers::ToMap(helpers::Position particle,
                                observation.y * sin(particle.theta),
                            particle.y + observation.x * sin(particle.theta) +
                                observation.y * cos(particle.theta)};
+}
+double helpers::NormPDF(double x, double y, double mu_x, double mu_y,
+                        double std_x, double std_y) {
+  auto distance = [](const auto& value, const auto& mu, const auto& std) {
+    return pow(value - mu, 2) / 2 / pow(std, 2);
+  };
+  return exp(-(distance(x, mu_x, std_x) + distance(y, mu_y, std_y))) / 2 /
+         M_PI / std_x / std_y;
 }
