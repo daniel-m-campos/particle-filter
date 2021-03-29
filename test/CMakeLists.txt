@@ -9,6 +9,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
         UNIT_TEST
         test.cpp
+        test_helpers.cpp
 )
 
 target_link_libraries(UNIT_TEST PARTICLE_FILTER gtest gtest_main)
